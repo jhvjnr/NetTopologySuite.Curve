@@ -302,7 +302,7 @@ namespace NetTopologySuite.Geometries
         /// <inheritdoc cref="Geometry.EqualsTopologically"/>
         public override bool EqualsTopologically(Geometry g)
         {
-            return Linearize().EqualsTopologically(g);
+            return Linearize().EqualsTopologically(g is ILinearizable<Geometry> curve ? curve.Linearize() : g);
         }
 
         /// <inheritdoc cref="Geometry.Normalize"/>
